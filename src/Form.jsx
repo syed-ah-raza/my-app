@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import './App.css';
 function Form() {
   // Define state variables to store form data
   const [formData, setFormData] = useState({
@@ -25,37 +25,38 @@ function Form() {
     console.log(formData);
     // Clear form after submission
     setFormData({
-        title: '',
-        category: '',
-        description: '',
-        image: null
+      title: '',
+      category: '',
+      description: '',
+      image: null
     });
   };
 
   return (
-    <div>
-      <h2>Contact Form</h2>
+    <div className="form-container">
+      <h2 className="form-title">Contact Form</h2>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">title of idea</label>
-          <input type="text" id="name" name="title" value={formData.name} onChange={handleChange} />
+        <div className="form-group">
+          <label htmlFor="title">Title of Idea:</label>
+          <input type="text" id="title" name="title" value={formData.title} onChange={handleChange} />
         </div>
-        <div>
-          <label>product category:</label>
-          <input type="text"  name="catogery" value={formData.category} onChange={handleChange} />
+        <div className="form-group">
+          <label htmlFor="category">Product Category:</label>
+          <input type="text" id="category" name="category" value={formData.category} onChange={handleChange} />
         </div>
-        <div>
-          <label htmlFor="message">description of product</label>
-          <textarea  name="description" value={formData.description} onChange={handleChange} />
+        <div className="form-group">
+          <label htmlFor="description">Description of Product:</label>
+          <textarea id="description" name="description" value={formData.description} onChange={handleChange} />
         </div>
-        <div>
-          <label >image attachment</label>
-          <textarea type="file" name="image" value={formData.image} onChange={handleChange} />
+        <div className="form-group">
+          <label htmlFor="image">Image Attachment:</label>
+          <input type="file" id="image" name="image" onChange={handleChange} />
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" className="form-submit">Submit</button>
       </form>
     </div>
   );
 }
 
 export default Form;
+
